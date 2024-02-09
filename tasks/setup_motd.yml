@@ -1,0 +1,15 @@
+---
+- name: Remove all motd scripts
+  ansible.builtin.shell: /bin/rm -rf /etc/update-motd.d/*
+
+- name: Copy own motd scripts
+  ansible.builtin.copy:
+    src: "motd/{{ item }}"
+    dest: "/etc/update-motd.d/{{ item }}"
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+    - 10-logo
+    - 20-sysinfo
+    
