@@ -1,5 +1,6 @@
 {
     "yaml.schemas": {
         "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks": "file:///home/johannes/repos/ansible-role-ubuntu-base/tasks/setup_motd.yml"
-    }
+    },
+    "ansible.python.interpreterPath": "/bin/python"
 }

@@ -1,0 +1,17 @@
+---
+- name: Create base data path
+  ansible.builtin.file:
+    path: "{{ general_data_base_path }}"
+    owner: root
+    group: root
+    mode: "0750"
+    state: directory
+
+- name: Create data subfolders
+  ansible.builtin.file:
+    path: "{{ item }}"
+    owner: root
+    group: root
+    mode: "0750"
+    state: directory
+  loop: "{{ general_data_folder_structure }}"

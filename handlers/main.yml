@@ -1,2 +1,11 @@
 ---
 # handlers file for ansible-role-ubuntu-base
+- name: Restart ssh
+  service:
+    name: "{{ security_sshd_name }}"
+    state: "{{ security_ssh_restart_handler_state }}"
+
+- name: Reload fail2ban
+  service:
+    name: fail2ban
+    state: reloaded

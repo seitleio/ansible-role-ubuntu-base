@@ -1,2 +1,60 @@
 ---
 # defaults file for ansible-role-ubuntu-base
+
+# ----------------------------------- #
+# / General Settings
+# ----------------------------------- #
+general_data_base_path: "/data"
+general_data_folder_structure:
+  - "{{ general_data_base_path }}/certs"
+  - "{{ general_data_base_path }}/logs"
+  - "{{ general_data_base_path }}/services"
+# ----------------------------------- #
+
+# ----------------------------------- #
+# / User Setup
+# ----------------------------------- #
+user_users: []
+# - username: johannes
+#   groups: admin
+#   ssh_key: ssh-rsa AAAAB3Nza....
+user_sudoers_passwordless: []
+user_sudoers_passworded: []
+# ----------------------------------- #
+
+# ----------------------------------- #
+# / Settings sshd
+# ----------------------------------- #
+security_ssh_port: 22
+security_ssh_password_authentication: "no"
+security_ssh_permit_root_login: "yes"
+security_ssh_usedns: "no"
+security_ssh_permit_empty_password: "no"
+security_ssh_challenge_response_auth: "no"
+security_ssh_gss_api_authentication: "no"
+security_ssh_x11_forwarding: "no"
+security_sshd_state: started
+security_ssh_restart_handler_state: restarted
+security_ssh_allowed_users: []
+security_ssh_allowed_groups: []
+# ----------------------------------- #
+
+# ----------------------------------- #
+# / Settings unattended-upgrades
+# ----------------------------------- #
+security_autoupdate_enabled: true
+security_autoupdate_blacklist: []
+
+# Autoupdate mail settings used on Debian/Ubuntu only.
+security_autoupdate_reboot: "true"
+security_autoupdate_reboot_time: "03:00"
+security_autoupdate_mail_to: "admin@seitle.io"
+security_autoupdate_mail_on_error: true
+# ----------------------------------- #
+
+# ----------------------------------- #
+# / Settings fail2ban
+# ----------------------------------- #
+security_fail2ban_enabled: true
+security_fail2ban_custom_configuration_template: "fail2ban/jail.local.j2"
+# ----------------------------------- #

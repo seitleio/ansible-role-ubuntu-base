@@ -1,0 +1,16 @@
+---
+- name: Copy bashrc to remote host
+  ansible.builtin.copy:
+    src: files/bashrc
+    dest: /etc/skel/.bashrc
+    mode: "0644"
+    owner: root
+    group: root
+
+- name: Copy bashrc to root profile
+  ansible.builtin.copy:
+    src: files/bashrc
+    dest: /root/.bashrc
+    mode: "0644"
+    owner: root
+    group: root

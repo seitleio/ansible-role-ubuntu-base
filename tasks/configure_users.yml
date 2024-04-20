@@ -1,0 +1,38 @@
+---
+- name: Create user accounts
+  ansible.builtin.user:
+    name: "{{ item.username }}"
+    groups: "{{ item.groups }}"
+    create_home: true
+    shell: /bin/bash
+  with_items: "{{ user_users }}"
+  when: user_users | length > 0
+
+- name: Add authorized keys
+  ansible.builtin.authorized_key:
+    user: "{{ item.username }}"
+    key: "{{ item.ssh_key }}"
+  with_items: "{{ user_users }}"
+  when: user_users | length > 0 and 'ssh_key' in item
+
+- name: Add configured user accounts to passwordless sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^{{ item }}'
+    line: '{{ item }} ALL=(ALL) NOPASSWD: ALL'
+    state: present
+    validate: 'visudo -cf %s'
+    mode: 0440
+  with_items: "{{ user_sudoers_passwordless }}"
+  when: user_sudoers_passwordless | length > 0
+
+- name: Add configured user accounts to passworded sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^{{ item }}'
+    line: '{{ item }} ALL=(ALL) ALL'
+    state: present
+    validate: 'visudo -cf %s'
+    mode: 0440
+  with_items: "{{ user_sudoers_passworded }}"
+  when: user_sudoers_passworded | length > 0
