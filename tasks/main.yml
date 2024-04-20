@@ -1,5 +1,6 @@
 ---
 # tasks file for ansible-role-ubuntu-base
+- ansible.builtin.import_tasks: update_os.yml
 - ansible.builtin.import_tasks: setup_motd.yml
 - ansible.builtin.import_tasks: copy_bashrc.yml
 - ansible.builtin.import_tasks: configure_users.yml
