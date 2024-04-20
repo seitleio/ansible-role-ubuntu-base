@@ -1,4 +1,5 @@
 user_users:
   - username: testuser
+    password: test
     groups: admin
 user_sudoers_passwordless: [testuser]

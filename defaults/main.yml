@@ -15,8 +15,9 @@ general_data_folder_structure:
 # / User Setup
 # ----------------------------------- #
 user_users: []
-# - username: johannes
+# - username: testuser
 #   groups: admin
+#   password: test
 #   ssh_key: ssh-rsa AAAAB3Nza....
 user_sudoers_passwordless: []
 user_sudoers_passworded: []
