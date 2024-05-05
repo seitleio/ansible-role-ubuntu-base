@@ -5,7 +5,7 @@
     groups: "{{ item.groups }}"
     password: "{{ item.password | password_hash('sha512') }}"
     create_home: true
-    shell: /bin/bash
+ansible.builtin.shell: /bin/bash
   with_items: "{{ user_users }}"
   when: user_users | length > 0
 
