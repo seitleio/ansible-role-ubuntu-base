@@ -1,4 +1,6 @@
 galaxy_info:
+  role_name: ubuntu_base
+  namespace: seitleio
   author: Johannes Seitle
   description: Configures a new Ubuntu host
   company: seitle.io
