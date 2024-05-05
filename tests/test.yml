@@ -1,5 +1,6 @@
 ---
-- hosts: all
-  become: true
+- name: Test role
+  hosts: localhost
+  remote_user: root
   roles:
-    - ansible-role-ubuntu-base
+    - ../
